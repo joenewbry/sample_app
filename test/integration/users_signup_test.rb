@@ -31,7 +31,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     user = assigns(:user)
     # valid activation token
     get edit_account_activation_path(user.activation_token, email: user.email)
-    debugger
     assert user.reload.activated?
     follow_redirect!
     assert_template 'users/show'
